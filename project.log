@@ -1,3 +1,6 @@
 2025-10-02 13:00:41,067 - bcn_scraper - INFO - --- Iniciando Proceso de Scraping ---
 2025-10-02 13:00:41,518 - bcn_scraper - ERROR - No se encontró la sección principal del listado de parlamentarios.
 2025-10-02 13:00:41,518 - bcn_scraper - ERROR - No se pudieron obtener los links de los perfiles. Abortando.
+2025-10-02 13:09:44,763 - bcn_scraper - INFO - --- Iniciando Proceso de Scraping ---
+2025-10-02 13:09:45,879 - bcn_scraper - ERROR - No se encontró ningún enlace en la página.
+2025-10-02 13:09:45,885 - bcn_scraper - ERROR - No se pudieron obtener los links de los perfiles. Abortando.

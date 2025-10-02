@@ -34,19 +34,25 @@ def get_parliamentarian_links():
         response.raise_for_status() # Lanza un error para códigos 4xx/5xx
         soup = BeautifulSoup(response.content, 'html.parser')
         
-        # Encontrar la sección de listado
-        list_section = soup.find('div', class_='container-fluid')
-        if not list_section:
-            LOG.error("No se encontró la sección principal del listado de parlamentarios.")
+        # Búsqueda más robusta: encontrar todos los enlaces que parezcan de perfil
+        all_links = soup.find_all('a', href=True)
+        
+        if not all_links:
+            LOG.error("No se encontró ningún enlace en la página.")
             return []
 
-        # Extraer todos los enlaces que apuntan a un perfil
-        for a_tag in list_section.find_all('a', href=True):
-            if "/portal/a-z/" in a_tag['href'] and a_tag['href'] != "/portal/a-z/":
-                full_link = f"{BASE_URL}{a_tag['href']}"
+        for a_tag in all_links:
+            href = a_tag['href']
+            # Los links de perfil siguen un patrón específico
+            if href.startswith('/portal/a-z/') and len(href) > len('/portal/a-z/'):
+                full_link = f"{BASE_URL}{href}"
                 if full_link not in links:
                     links.append(full_link)
         
+        if not links:
+            LOG.error("No se encontraron links que coincidan con el patrón de perfil de parlamentario.")
+            return []
+
         LOG.info(f"Se encontraron {len(links)} links a perfiles de parlamentarios.")
         return links
 
