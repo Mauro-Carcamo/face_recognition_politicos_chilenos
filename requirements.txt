@@ -1,0 +1,13 @@
+requests
+beautifulsoup4
+pandas
+sqlalchemy
+pillow
+tqdm
+# Para el reconocimiento facial
+insightface
+onnxruntime
+numpy
+# Para el procesamiento de video
+opencv-python-headless
+streamlink
