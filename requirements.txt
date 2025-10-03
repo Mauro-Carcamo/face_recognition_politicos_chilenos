@@ -10,3 +10,6 @@ numpy
 # Para el procesamiento de video
 opencv-python-headless
 streamlink
+# Para automatización de navegador
+selenium
+webdriver-manager
